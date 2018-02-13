@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { connect } from 'react-redux';
+import { signin } from "./actions";
 
 class Signin extends Component{
     constructor(props){
@@ -23,11 +25,12 @@ class Signin extends Component{
         e.preventDefault();
         console.log('form submitted: ', this.state);
 
-        axios.post('http://localhost:9000/auth/signin', this.state).then(resp=>{
-            console.log('sign in response is: ', resp);
-        }).catch((err)=>{
-            console.log('sign in error is: ', err.message);
-        });
+        // axios.post('http://localhost:9000/auth/signin', this.state).then(resp=>{
+        //     console.log('sign in response is: ', resp);
+        // }).catch((err)=>{
+        //     console.log('sign in error is: ', err.message);
+        // });
+        this.props.signin(this.state);
     }
 
     render(){
@@ -35,7 +38,7 @@ class Signin extends Component{
 
         return(
             <div>
-                <h1>Sign up</h1>
+                <h1>Sign in</h1>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         Email:
@@ -46,11 +49,20 @@ class Signin extends Component{
                         <input name="password" onChange={this.handleChange} value={password}/>
                     </div>
 
-                    <button>Sign in</button>
+                    <button className="btn">Sign in</button>
+                    <p className="red-text">{this.props.error}</p>
                 </form>
             </div>
         )
     }
 }
 
-export default Signin;
+// export default Signin;
+
+function mapStateToProps(state){
+    return{
+        error: state.user.error
+    }
+}
+
+export default connect(mapStateToProps, { signin })(Signin);
