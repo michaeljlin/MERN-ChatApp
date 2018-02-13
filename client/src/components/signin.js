@@ -49,7 +49,8 @@ class Signin extends Component{
                         <input name="password" onChange={this.handleChange} value={password}/>
                     </div>
 
-                    <button>Sign in</button>
+                    <button className="btn">Sign in</button>
+                    <p className="red-text">{this.props.error}</p>
                 </form>
             </div>
         )
@@ -58,4 +59,10 @@ class Signin extends Component{
 
 // export default Signin;
 
-export default connect(null, { signin })(Signin);
+function mapStateToProps(state){
+    return{
+        error: state.user.error
+    }
+}
+
+export default connect(mapStateToProps, { signin })(Signin);
