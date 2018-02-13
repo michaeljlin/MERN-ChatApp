@@ -24,11 +24,11 @@ class Signup extends Component{
         e.preventDefault();
         console.log('form submitted: ', this.state);
 
-        axios.post('http://localhost:9000/auth/signup', this.state).then(resp=>{
-            console.log('sign up response is: ', resp);
-        }).catch((err)=>{
-            console.log('sign up error is: ', err.message);
-        });
+        // axios.post('http://localhost:9000/auth/signup', this.state).then(resp=>{
+        //     console.log('sign up response is: ', resp);
+        // }).catch((err)=>{
+        //     console.log('sign up error is: ', err.message);
+        // });
     }
 
     render(){

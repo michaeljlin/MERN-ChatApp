@@ -2,10 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default props =>{
+
+    const navStyles = {
+        paddingLeft: '10px'
+    };
+
     return(
         <nav>
-            <div className="nav-wrapper">
-                <Link to="/" className="brand-logo">Chat App</Link>
+            <div className="nav-wrapper ">
+                <Link style={navStyles} to="/" className="brand-logo">Chat App</Link>
                 <ul className="right">
                     <li>
                         <Link to="/">Home</Link>
